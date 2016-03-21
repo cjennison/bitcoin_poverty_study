@@ -12,6 +12,11 @@ data = {
     'blocks': list()
 }
 
+# get config
+with open('config.json') as config_info:
+    configData = json.load(config_info);
+    apiKey = configData["apikey"];
+
 # Source; http://stackoverflow.com/questions/6999726/how-can-i-convert-a-datetime-object-to-milliseconds-since-epoch-unix-time-in-p
 date = datetime(startYear, startDay, startMonth)
 epoch = datetime.utcfromtimestamp(0)
@@ -24,10 +29,8 @@ print "Downloading Blockchain Data from Blockchain.info from " + str(date) + " f
 for i in range(0, numberOfDays):
     date += timedelta(days=1);
 
-    #url = 'https://blockchain.info/rawtx/129728510'
-
     # get blocks on this day
-    url = 'https://blockchain.info/blocks/' + str(unix_time_millis(date)) + '?format=json'
+    url = 'https://blockchain.info/blocks/' + str(unix_time_millis(date)) + '?format=json&api_code=' + apiKey;
     response = requests.get(url)
 
     blocks = json.loads(response.text)['blocks'];

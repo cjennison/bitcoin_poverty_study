@@ -17,6 +17,8 @@ Install Pip (http://www.python-requests.org/en/latest/user/install/#install)
 ```pip install requests```
 
 # Usage:
+Run `cp config_tmpl.json config.json` and edit the config file with the supplied API key.
+
 First in `blocks_downloader.py` define the date range you want to examine setting startYear, startMonth, and startDay with numberOfDays greater than 0.  
 (ex. 2010, 1, 1 and 365 days will get you a range from 2010 to 2011)  
 
