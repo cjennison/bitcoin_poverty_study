@@ -1,6 +1,7 @@
 import sys
 import json
 import requests
+import pythonwhois
 
 if (len(sys.argv) < 3):
     print "Invalid number of arguments (expected 2)"
@@ -21,6 +22,11 @@ print "Reading data from %d Transactions" % len(txData['transactions']);
 
 for i in range(0, len(txData['transactions'])):
     relayIP = txData['transactions'][i]['relayed_by'];
+    try:
+        countryIP = pythonwhois.get_whois(relayIP)
+        break
+    except shared.WhoisException:
+        countryIP = "WhoIsError"
     print relayIP
 
     # TODO now find the IP information!
