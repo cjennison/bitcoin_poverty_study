@@ -22,7 +22,7 @@ with open('config.json') as config_info:
 transactionData = {
     'transactions': list()
 }
- 
+
 print "Reading data from %d Transactions" % len(txData['transactions']);
 txFile = open(sys.argv[2],'w')
 totalTx = len(txData['transactions']);
