@@ -26,3 +26,6 @@ A file named after your request will appear under `./block_requests`
 
 Then run the `transaction_downloader.py` with the name of your block list and an output file name  
 (ex. `python transaction_downloader.py block_requests/blocks_for_yesterday.json transaction_data/tx_dump_1.json`)
+
+Next run country_mapper.py to output a list of transactions relayed from a specific country
+(ex. 'python country_mapper.py < path/to/transaction json file > < output file name > < country >')
