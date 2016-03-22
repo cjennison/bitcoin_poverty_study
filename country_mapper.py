@@ -24,8 +24,9 @@ transactionData = {
 }
 
 print "Reading data from %d Transactions" % len(txData['transactions']);
-
-for i in range(0, len(txData['transactions'])):
+txFile = open(sys.argv[2],'w')
+totalTx = len(txData['transactions']);
+for i in range(0, totalTx):
     relayIP = txData['transactions'][i]['relayed_by'];
     #try:
     if (i % 15 == 0):
@@ -33,8 +34,13 @@ for i in range(0, len(txData['transactions'])):
     httpPacket = requests.get("http://api.ipinfodb.com/v3/ip-country/?key=" + str(otherapiKey) + "&ip=" + relayIP)
     #except Exception:
     #    countryIP = "WhoIsError"
-
-    countryIP = (httpPacket.text.split(";")[4])
-    print countryIP
-
-    # TODO now find the IP information!
+    try:
+        countryName = (httpPacket.text.split(";")[4])
+    except IndexError:
+        coutnryName = ""
+    if (countryName.lower() == sys.argv[3].lower()):
+        txFile.write(str(txData['transactions'][i]));
+    out= "%d%% Complete" % ((i*100)/totalTx);
+    sys.stdout.write("\033[92m")
+    sys.stdout.write("\r%s" % (out));
+    sys.stdout.flush();
