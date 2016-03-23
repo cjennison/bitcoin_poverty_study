@@ -27,17 +27,24 @@ print "Reading data from %d Transactions" % len(txData['transactions']);
 txFile = open(sys.argv[2],'w')
 totalTx = len(txData['transactions']);
 for i in range(0, totalTx):
+    trycount = 0;
+
+    # IP which first(ish) broadcasted the tx
     relayIP = txData['transactions'][i]['relayed_by'];
-    #try:
-    if (i % 15 == 0):
-        time.sleep(1)
+
+    # Retrieve the about that IP (including country) from this nifty API
     httpPacket = requests.get("http://api.ipinfodb.com/v3/ip-country/?key=" + str(otherapiKey) + "&ip=" + relayIP)
-    #except Exception:
-    #    countryIP = "WhoIsError"
+
+    # If the request to the server fails, we try it 5 time, then give up
+    while (httpPacket.status_code != 200 and trycount < 5):
+        httpPacket = requests.get("http://api.ipinfodb.com/v3/ip-country/?key=" + str(otherapiKey) + "&ip=" + relayIP)
+        trycount += 1;
+
     try:
         countryName = (httpPacket.text.split(";")[4])
     except IndexError:
         coutnryName = ""
+
     if (countryName.lower() == sys.argv[3].lower()):
         txFile.write(str(txData['transactions'][i]));
     out= "%d%% Complete" % ((i*100)/totalTx);
