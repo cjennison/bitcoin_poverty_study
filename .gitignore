@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+outputfile*.json
+
 # Config
 config.json
 
@@ -63,3 +65,4 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+.Rproj.user
