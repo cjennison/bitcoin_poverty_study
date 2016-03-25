@@ -6,7 +6,7 @@ startYear = 2013
 startDay = 1;
 startMonth = 1;
 
-numberOfDays = 1;
+numberOfDays = 365;
 
 data = {
     'blocks': list()
