@@ -70,6 +70,8 @@ for i in range(0, len(blockData['blocks'])):
         except IndexError:
             countryName = ""
 
+        countryName = countryName.replace(" ", "");
+
         if (countryName.lower() == filteredCountryName.lower()):
             outputFile.write("%s, %d, %d, %d, %d, %s, %s, %d\n" % (tx['hash'], block['time'], tx['vin_sz'], tx['vout_sz'], tx['size'], tx['relayed_by'], tx['tx_index'], outputAmount))
 
