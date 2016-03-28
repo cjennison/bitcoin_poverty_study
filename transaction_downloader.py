@@ -33,10 +33,14 @@ print "Reading data from %d Blocks" % len(blockData['blocks']);
 for i in range(0, len(blockData['blocks'])):
     blockHeight = blockData['blocks'][i]['hash'];
 
-    url = 'https://blockchain.info/rawblock/' + str(blockHeight) + '?format=json&api_code=' + apiKey;
-    response = requests.get(url)
-
-    block = json.loads(response.text);
+    try:
+        url = 'https://blockchain.info/rawblock/' + str(blockHeight) + '?format=json&api_code=' + apiKey;
+        response = requests.get(url)
+        block = json.loads(response.text);
+    except:
+        print "Error getting Tx for Block"
+        time.sleep(5)
+        continue;
 
     for x in range(0, len(block['tx'])):
         tx = block['tx'][x];
