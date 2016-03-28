@@ -4,7 +4,7 @@ from datetime import datetime, date, time, timedelta
 
 startYear = 2013
 startDay = 1;
-startMonth = 1;
+startMonth = 11;
 
 numberOfDays = 365;
 

@@ -4,7 +4,7 @@ import requests
 import time
 
 if (len(sys.argv) < 4):
-    print "Invalid number of arguments (expected 2)"
+    print "Invalid number of arguments (expected 4)"
     quit();
 
 outputName = sys.argv[2];
