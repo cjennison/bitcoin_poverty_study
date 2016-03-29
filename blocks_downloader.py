@@ -4,9 +4,9 @@ from datetime import datetime, date, time, timedelta
 
 startYear = 2013
 startDay = 1;
-startMonth = 11;
+startMonth = 1;
 
-numberOfDays = 365;
+numberOfDays = 90;
 
 data = {
     'blocks': list()

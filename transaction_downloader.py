@@ -10,6 +10,8 @@ if (len(sys.argv) < 4):
 outputName = sys.argv[2];
 filteredCountryName = sys.argv[3];
 
+checkedIPs = {};
+
 # get config
 with open('config.json') as config_info:
     configData = json.load(config_info);
@@ -22,6 +24,7 @@ with open(sys.argv[1]) as json_data:
     blockData = json.load(json_data);
 
 outputFile = open(outputName, 'w');
+logfile = open(filteredCountryName + ".log", 'w');
 
 def getTotalOutValue (out):
     val = 0;
@@ -47,8 +50,10 @@ for i in range(0, len(blockData['blocks'])):
 
         relayIP = tx['relayed_by'];
 
-        if (relayIP == '127.0.0.1'):
+        if (relayIP == '127.0.0.1' or checkedIPs.has_key(relayIP)):
             continue;
+
+        print "New IP ... Checking ..."
 
         outputAmount = getTotalOutValue(tx['out']);
 
@@ -58,7 +63,8 @@ for i in range(0, len(blockData['blocks'])):
 
             # If the requests to the server fails, we wait 1 second (for rate limiting) and try again
             if (httpPacket.status_code != 200):
-                time.sleep(20);
+                print "Failure getting IP Info .. Waiting 10 Seconds"
+                time.sleep(10);
                 httpPacket = requests.get("http://api.ipinfodb.com/v3/ip-country/?key=" + str(infodbKey) + "&ip=" + relayIP, timeout=None)
         except:
             print "Fatal Error Getting Packet, Skipping ... "
@@ -73,6 +79,13 @@ for i in range(0, len(blockData['blocks'])):
         countryName = countryName.replace(" ", "");
 
         if (countryName.lower() == filteredCountryName.lower()):
+            print "Matching IP!"
             outputFile.write("%s, %d, %d, %d, %d, %s, %s, %d\n" % (tx['hash'], block['time'], tx['vin_sz'], tx['vout_sz'], tx['size'], tx['relayed_by'], tx['tx_index'], outputAmount))
+        else:
+            checkedIPs[relayIP] = True;
+            print "Bad IP, Adding to skip list"
 
     print "%d%% Complete" % ((i*100)/len(blockData['blocks']));
+    logfile.write("%d%% Complete\n" % ((i*100)/len(blockData['blocks'])))
+
+logfile.write("Completed!");
