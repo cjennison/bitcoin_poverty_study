@@ -4,7 +4,7 @@ from datetime import datetime, date, time, timedelta
 
 startYear = 2013
 startDay = 1;
-startMonth = 1;
+startMonth = 11;
 
 numberOfDays = 90;
 
@@ -18,7 +18,7 @@ with open('config.json') as config_info:
     apiKey = configData["apikey"];
 
 # Source; http://stackoverflow.com/questions/6999726/how-can-i-convert-a-datetime-object-to-milliseconds-since-epoch-unix-time-in-p
-date = datetime(startYear, startDay, startMonth)
+date = datetime(startYear, startMonth, startDay)
 epoch = datetime.utcfromtimestamp(0)
 
 def unix_time_millis(dt):
