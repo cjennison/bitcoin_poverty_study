@@ -63,8 +63,8 @@ for i in range(0, len(blockData['blocks'])):
 
             # If the requests to the server fails, we wait 1 second (for rate limiting) and try again
             if (httpPacket.status_code != 200):
-                print "Failure getting IP Info .. Waiting 10 Seconds"
-                time.sleep(10);
+                print "Failure getting IP Info .. Waiting 2 Seconds"
+                time.sleep(2);
                 httpPacket = requests.get("http://api.ipinfodb.com/v3/ip-country/?key=" + str(infodbKey) + "&ip=" + relayIP, timeout=None)
         except:
             print "Fatal Error Getting Packet, Skipping ... "
@@ -85,7 +85,7 @@ for i in range(0, len(blockData['blocks'])):
             checkedIPs[relayIP] = True;
             print "Bad IP, Adding to skip list"
 
-    print "%d%% Complete" % ((i*100)/len(blockData['blocks']));
+    print "%d%% Complete %d/%d" % ((i*100)/len(blockData['blocks']), i, len(blockData['blocks']));
     logfile.write("%d%% Complete\n" % ((i*100)/len(blockData['blocks'])))
 
 logfile.write("Completed!");
