@@ -8,9 +8,9 @@ require(scales)
 library(grid)
 library(dplyr)
 
-country <- "Russia"
+country <- "Ukraine"
 
-df <- read.csv("./transaction_Data/russia1.csv", header = FALSE)
+df <- read.csv("./transaction_Data/tx_dump.json", header = FALSE)
 colnames(df) <- c("hash", "date", "vin_sz", "vout_sz", "size", "relayed_by", "tx_index", "out_amount")
 
 df$date <- as.Date(as.POSIXct(df$date, origin="1970-01-01"))
