@@ -2,9 +2,9 @@ import requests
 import json
 from datetime import datetime, date, time, timedelta
 
-startYear = 2013
-startDay = 1;
-startMonth = 11;
+startYear = 2014
+startDay = 29;
+startMonth = 12;
 
 numberOfDays = 90;
 

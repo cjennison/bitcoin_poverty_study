@@ -31,15 +31,19 @@ def getTotalOutValue (tx):
     _in = tx['inputs']
     val = 0;
     for i in range(0, len(out)):
+        addr = None;
 
-        addr = out[i]['addr'];
+        if (out[i].has_key('addr')):
+            addr = out[i]['addr'];
+
         isSelf = False;
         # if this address is in the inputs, dont add it
-        for k in range(0, len(_in)):
-            _input = _in[k]
-            if (_input.has_key('prev_out') and _input['prev_out'].has_key('addr')):
-                if (_input['prev_out']['addr'] == addr):
-                    isSelf = True;
+        if addr:
+            for k in range(0, len(_in)):
+                _input = _in[k]
+                if (_input.has_key('prev_out') and _input['prev_out'].has_key('addr')):
+                    if (_input['prev_out']['addr'] == addr):
+                        isSelf = True;
 
         if not isSelf:
             val = val + out[i]['value'];
