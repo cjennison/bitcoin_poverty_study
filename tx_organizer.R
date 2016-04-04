@@ -8,7 +8,7 @@ require(scales)
 library(grid)
 library(dplyr)
 
-country <- "Russia"
+country <- "Ukraine"
 
 temp = list.files(path=paste(getwd(), "/transaction_data/", sep=""), pattern="*.csv")
 
@@ -32,17 +32,17 @@ outputByDate <- summarize(byDate, out_amount=sum(out_amount), numTransactions=n(
 
 # Number of Transactions
 ggplot(data=outputByDate, aes(x=date, y=numTransactions)) + geom_bar(stat="identity") + 
-  theme_minimal() + xlab("Dates") + ylab("Number of Transactions") + ggtitle(paste("Transactions from 2013 to Present in", country)) + coord_flip()
+  theme_minimal() + xlab("Dates") + ylab("Number of Transactions") + ggtitle(paste("Transactions from 2013 to Present in", country))
 ggsave(paste("TransactionTimelinePlot_", country, ".png", sep=""), width=6, height=20)
 
 # Amount of Money spent per day
 ggplot(data=outputByDate, aes(x=date, y=out_amount)) + geom_line() + scale_fill_brewer(palette="Blues") + scale_y_continuous(labels=comma) +
-  theme_minimal() + xlab("Dates") + ylab("Amount of Bitcoin Sent") + ggtitle(paste("Amount of Bitcoin used from 2013 to Present in", country)) + coord_flip()
+  theme_minimal() + xlab("Dates") + ylab("Amount of Bitcoin Sent") + ggtitle(paste("Amount of Bitcoin used from 2013 to Present in", country))
 ggsave(paste("OutputTimelinePlot_", country, ".png", sep=""), width=6, height=20)
 
 
 MainPlot <- ggplot() + geom_bar(data=outputByDate, aes(x=date, y=numTransactions), stat="identity") + theme_minimal() + xlab("Dates") + ylab("Number of Transactions") + ggtitle(paste("Transactions from 2013 to Present in", country))
-SecondaryPlot <- ggplot() + geom_line(data=outputByDate, aes(x=date, y=out_amount)) + scale_y_continuous(labels=comma) + theme_minimal() + xlab("Dates") + ylab("Amount of Bitcoin Sent") + ggtitle(paste("Amount of Bitcoin used from 2013 to Present in", country)) + coord_flip()
+SecondaryPlot <- ggplot() + geom_line(data=outputByDate, aes(x=date, y=out_amount)) + scale_y_continuous(labels=comma) + theme_minimal() + xlab("Dates") + ylab("Amount of Bitcoin Sent") + ggtitle(paste("Amount of Bitcoin used from 2013 to Present in", country))
 
 pdf(paste("TX_Output_Combined_", country, ".pdf", sep=""))
 grid.newpage()
