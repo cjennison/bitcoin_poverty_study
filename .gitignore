@@ -67,7 +67,5 @@ target/
 .ipynb_checkpoints
 .Rproj.user
 
-*.pdf
-*.png
 transaction_data/*.csv
 block_requests/*.json
