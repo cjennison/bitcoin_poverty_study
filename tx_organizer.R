@@ -35,7 +35,7 @@ outputByDate <- summarize(byDate, out_amount=sum(out_amount),
                                   mean_output=(sum(out_amount)/n()))
 
 
-events <- c("A", "B", "C", "D", "E", "F", "G", "H", "I")
+events <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", 'R', 'S','T')
 eventDescriptions <- c("Ukrainian peaceful protest in Kiev", 
                       "Protestors occupy city hall in Kiev",
                       "Putin buys $15bn in Ukrainian Debt",
@@ -44,7 +44,18 @@ eventDescriptions <- c("Ukrainian peaceful protest in Kiev",
                       "Arrested protestors are released",
                       "Deadly riot erupts, 88 people die in 24 hours",
                       "Pro-Russian gunmen seize key buildings in the Crimean capital, Simferopol",
-                      "Russia authorizes Putin to use force in Ukraine")
+                      "Russia authorizes Putin to use force in Ukraine",
+                      "President Putin signs a bill to absorb Crimea into the Russian Federation",
+                      "US President Barack Obama urges Moscow to move back its troops and lower tensions.",
+                      "Ukraine's acting president orders the relaunch of military operations against pro-Russian militants in the east",
+                      "Pro-Russian separatists in Donetsk and Luhansk declare independence after unrecognised referendums.",
+                      "Ukraine elects Petro Poroshenko as president in an election not held in much of the east.",
+                      "Pro-Russia separatists shoot down a military plane in the east, killing 49 people.",
+                      "The EU signs a landmark association agreement with Ukraine.",
+                      "The EU and US announce new sanctions against Russia.",
+                      "Ukraine and pro-Russian rebels sign a truce in Minsk.",
+                      "Nato reports a withdrawal of Russian troops from eastern Ukraine.",
+                      "Pro-Western parties win Ukraine's parliamentary elections.")
 dates <- c(as.Date("2013-11-10"), #A
            as.Date("2013-12-02"), #B
            as.Date("2013-12-17"), #C
@@ -53,7 +64,19 @@ dates <- c(as.Date("2013-11-10"), #A
            as.Date("2014-02-14"), #F
            as.Date("2014-02-20"), #G
            as.Date("2014-02-28"), #H
-           as.Date("2014-03-1"))  
+           as.Date("2014-03-01"), #I
+           as.Date("2014-03-16"), #J
+           as.Date("2014-03-28"), #K
+           as.Date("2014-04-22"),
+           as.Date("2014-05-11"),
+           as.Date("2014-05-25"),
+           as.Date("2014-06-14"),
+           as.Date("2014-06-26"),
+           as.Date("2014-07-30"),
+           as.Date("2014-09-05"),
+           as.Date("2014-09-24"),
+           as.Date("2014-10-26")
+           )  
 events_df <- data.frame(events, dates, eventDescriptions);
 
 # Number of Transactions
