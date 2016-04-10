@@ -2,11 +2,11 @@ import requests
 import json
 from datetime import datetime, date, time, timedelta
 
-startYear = 2014
+startYear = 2015
 startDay = 29;
-startMonth = 12;
+startMonth = 03;
 
-numberOfDays = 883;
+numberOfDays = 140;
 
 data = {
     'blocks': list()
