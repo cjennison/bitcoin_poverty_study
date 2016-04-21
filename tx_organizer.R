@@ -51,7 +51,7 @@ types <- c("Social", "Social", "Economic", "Social", "Political", "Social", "Mil
 eventDescriptions <- c("Ukrainian peaceful protest in Kiev", 
                       "Protestors occupy city hall in Kiev",
                       "Putin buys $15bn in Ukrainian Debt",
-                      "Parliament passes any protest law, riots happen, protestors control city hall",
+                      "Parliament passes anti protest law, riots happen, protestors control city hall",
                       "Prime Minister Mykola Azarov resigns, anti-protest law is annulled",
                       "Arrested protestors are released",
                       "Deadly riot erupts, 88 people die in 24 hours",
@@ -69,7 +69,7 @@ eventDescriptions <- c("Ukrainian peaceful protest in Kiev",
                       "Nato reports a withdrawal of Russian troops from eastern Ukraine.",
                       "Pro-Western parties win Ukraine's parliamentary elections.",
                       "Pro Russian Separatists elect new leaders backed by Russia, 1US = 43 RUbles",
-                      "December spends ~$2 Billion from federal reserves to save ruble, Central Bank intervenes, interest rates increase from 10.5 to 17%. 1 US = 68 Rubles",
+                      "Russia spends ~$2 Billion from federal reserves to save ruble, Central Bank intervenes, interest rates increase from 10.5 to 17%. 1 US = 68 Rubles",
                       "Minsk 2 is signed after failed ceasefire, oil prices plumet. 1US = 66 Rubles",
                       "Opposition leader Boris Mentsov is shot and killed in Moscow")
 dates <- c(as.Date("2013-11-10"), #A
