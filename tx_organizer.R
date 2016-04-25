@@ -102,7 +102,7 @@ events_df <- data.frame(events, dates, types, eventDescriptions);
 # Number of Transactions
 ggplot(data=outputByDate, aes(x=date, y=numTransactions)) + geom_bar(stat="identity") + 
   theme_minimal() + xlab("Dates") + scale_x_date(date_breaks = "1 month", date_labels = "%b %d %y") +  
-  ylab("Number of Transactions") + ggtitle(paste("Transactions from 2013 to Present in", country)) + 
+  ylab("Number of Transactions") + ggtitle(paste("Transactions from 2013 to 2015 in", country)) + 
   geom_vline(data=events_df, aes(xintercept=as.numeric(as.Date(events_df$dates)), colour=events_df$types), linetype=4) + 
   geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$numTransactions, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")
 
@@ -111,7 +111,7 @@ ggsave(paste("outputs/TransactionTimelinePlot_", country, ".png", sep=""), width
 # Amount of Money spent per day
 ggplot(data=outputByDate, aes(x=date, y=out_amount)) + geom_line() + scale_fill_brewer(palette="Blues") + scale_y_continuous(labels=comma) +
  theme_minimal() + scale_x_date(date_breaks = "1 month", date_labels = "%b %d %y") + xlab("Dates") + ylab("Total Bitcoin Sent") + 
- ggtitle(paste("Amount of Bitcoin used from 2013 to Present in", country)) +
+ ggtitle(paste("Amount of Bitcoin used from 2013 to 2015 in", country)) +
   geom_vline(data=events_df, aes(xintercept=as.numeric(as.Date(events_df$dates)), colour=events_df$types), linetype=4) + 
   geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$out_amount, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")
 
@@ -119,7 +119,7 @@ ggsave(paste("outputs/OutputTimelinePlot_", country, ".png", sep=""), width=20, 
 
 # Avg Amount of Money Spent per day
 ggplot() + geom_line(data=outputByDate, aes(x=date, y=mean_output)) + theme_minimal()  + scale_x_date(date_breaks = "1 month", date_labels = "%b %d %y") + scale_y_continuous(labels=comma) + 
-  theme_minimal() + xlab("Dates") + ylab("Avg Amount of Bitcoin Sent") + ggtitle(paste("Avg Amount of Bitcoin sent per day from 2013 to Present in", country)) + 
+  theme_minimal() + xlab("Dates") + ylab("Avg Amount of Bitcoin Sent") + ggtitle(paste("Avg Amount of Bitcoin sent per day from 2013 to 2015 in", country)) + 
   geom_vline(aes(xintercept=as.numeric(as.Date(events_df$dates)), colour=events_df$types), linetype=4) + 
   geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$mean_output, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")
   
