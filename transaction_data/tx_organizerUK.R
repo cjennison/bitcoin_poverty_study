@@ -87,7 +87,7 @@ graph <- ggplot(data=outputByDate, aes(x=date, y=numTransactions)) + geom_bar(st
 graph <- graph + theme_minimal() + xlab("Dates") + scale_x_date(date_breaks = "1 month", date_labels = "%b %d %y")
 graph <- graph + ylab("Number of Transactions") + ggtitle(paste("Transactions from 2013 to Present in", country))
 graph <- graph + geom_vline(data=events_df, aes(xintercept=as.numeric(as.Date(events_df$dates)), colour=events_df$types), linetype=4)
-graph <- graph + geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$numTransactions, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")
+graph <- graph + geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$numTransactions, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")+ theme(axis.text.x = element_text(angle = 45, hjust = .5))
 graph
 ggsave(paste("../outputs/TransactionTimelinePlot_", country, ".png", sep=""), width=20, height=6)
 
@@ -96,7 +96,7 @@ graph <- ggplot(data=outputByDate, aes(x=date, y=out_amount,)) + geom_line() + s
   graph <- graph + theme_minimal() + scale_x_date(date_breaks = "1 month", date_labels = "%b %d %y") + xlab("Dates") + ylab("Total Bitcoin Sent")
   graph <- graph + ggtitle(paste("Amount of Bitcoin used from 2013 to Present in", country))
   graph <- graph +  geom_vline(data=events_df, aes(xintercept=as.numeric(as.Date(events_df$dates)), colour=events_df$types), linetype=4)
-  graph <- graph +  geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$out_amount, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")
+  graph <- graph +  geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$out_amount, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")+ theme(axis.text.x = element_text(angle = 45, hjust = .5))
 graph
 ggsave(paste("../outputs/OutputTimelinePlot_", country, ".png", sep=""), width=20, height=6)
 
@@ -105,7 +105,7 @@ graph <- ggplot(data=outputByDate, aes(x=date, y=out_amount,)) + geom_line() + s
 graph <- graph + theme_minimal() + scale_x_date(date_breaks = "1 month", date_labels = "%b %d %y") + xlab("Dates") + ylab("Total Bitcoin Sent")
 graph <- graph + ggtitle(paste("Amount of Bitcoin used from 2013 to Present in", country))
 graph <- graph +  geom_vline(data=events_df, aes(xintercept=as.numeric(as.Date(events_df$dates)), colour=events_df$types), linetype=4)
-graph <- graph +  geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$out_amount, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")
+graph <- graph +  geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$out_amount, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")+ theme(axis.text.x = element_text(angle = 45, hjust = .5))
 graph
 ggsave(paste("../outputs/OutputTimelinePlotNoCutoff_", country, ".png", sep=""), width=20, height=6)
 
@@ -114,7 +114,7 @@ ggsave(paste("../outputs/OutputTimelinePlotNoCutoff_", country, ".png", sep=""),
 ggplot() + geom_line(data=outputByDate, aes(x=date, y=mean_output)) + theme_minimal()  + scale_x_date(date_breaks = "1 month", date_labels = "%b %d %y") + scale_y_continuous(labels=comma) + 
   theme_minimal() + xlab("Dates") + ylab("Avg Amount of Bitcoin Sent") + ggtitle(paste("Avg Amount of Bitcoin sent per day from 2013 to Present in", country)) + 
   geom_vline(aes(xintercept=as.numeric(as.Date(events_df$dates)), colour=events_df$types), linetype=4) + 
-  geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$mean_output, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")
+  geom_text(data=events_df, aes(x=events_df$dates + 4, y=max(outputByDate$mean_output, na.rm=TRUE), label=events, colour=types)) + scale_colour_discrete(name="Event Type")+ theme(axis.text.x = element_text(angle = 45, hjust = .5))
   
 ggsave(paste("../outputs/AvgOutputTimelinePlot_", country, ".png", sep=""), width=20, height=6)
  
