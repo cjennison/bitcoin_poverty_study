@@ -1,5 +1,5 @@
 # Bitcoin Poverty Study
-A repository to study and understand the impact of Bitcoin on companies with poor economies.  
+A repository to study and understand the impact of Bitcoin on countries (Russia, Ukraine) with poor economies during times of conflict.  
 ## Steps:
 1. Get all blocks between a given date
 2. Get all transactions from each block
